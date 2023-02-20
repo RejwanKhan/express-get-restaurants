@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "seed": "node seed.js",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "startDev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.3",
+    "nodemon": "^2.0.20",
     "path": "^0.12.7",
-    "sequelize": "^6.21.4",
-    "sqlite3": "^5.0.11"
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4"
   }
 }
