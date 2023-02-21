@@ -18,3 +18,16 @@ app.get("/restaurants", async (req, res) => {
   res.json(allRestaurants);
   //   res.send(allRestaurants);
 });
+
+app.get("/restaurants/:id", async (req, res) => {
+  let { id } = req.params;
+  id = Number(id);
+  console.log(id);
+  const restaurants = await Restaurant.findByPk(id);
+  const allRestaurants = await Restaurant.findAll();
+  if (restaurants) {
+    res.send(restaurants);
+  } else {
+    res.send(allRestaurants);
+  }
+});
