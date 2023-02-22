@@ -31,3 +31,47 @@ app.get("/restaurants/:id", async (req, res) => {
     res.send(allRestaurants);
   }
 });
+
+//Activity 3
+app.post("/restaurants", async (req, res) => {
+  const { name, location, cuisine } = req.body;
+  if ((name, location, cuisine)) {
+    await Restaurant.create({
+      name: name,
+      location: location,
+      cuisine: cuisine,
+    });
+  }
+  res.send(201);
+});
+
+app.put("/restaurants/:id", async (req, res) => {
+  const { id } = req.params;
+  const { name, location, cuisine } = req.body;
+  const originalRestaurant = await Restaurant.findByPk(Number(id));
+  // if ((name, location, cuisine)) {
+  //   await originalRestaurant.update({
+  //     name: name,
+  //     location: location,
+  //     cuisine: cuisine,
+  //   });
+  // }
+  if (name) {
+    await originalRestaurant.update({ name: name });
+  }
+  if (location) {
+    await originalRestaurant.update({ location: location });
+  }
+  if (cuisine) {
+    await originalRestaurant.update({ cuisine: cuisine });
+  }
+  res.send(201);
+});
+
+app.delete("/restaurants/:idNumber", async (req, res) => {
+  const { idNumber } = req.params;
+  const restaurant = await Restaurant.findByPk(Number(idNumber));
+  const { id } = restaurant;
+  await Restaurant.destroy({ where: { id: id } });
+  res.send("Restaurant has been deleted");
+});
