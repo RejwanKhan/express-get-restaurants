@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const { Restaurant } = require("./models/index");
+
 const RestaurantRouter = require("./router/Restaurant");
 
 const { sequelize } = require("./db");

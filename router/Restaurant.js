@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-
+const { Restaurant } = require("../models/Restaurant");
 router.get("/", async (req, res) => {
   const allRestaurants = await Restaurant.findAll();
   console.log(JSON.stringify(allRestaurants, null, 2));
